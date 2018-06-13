@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="OnTimeCompletion"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{AA7F6588-9279-4C5D-B7CA-F0E9D6309CDA}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{0483DB3D-8401-4D0D-8E98-9AD105F43544}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAC78d43z/a9wRZnh9isQPCEAAAAAASAAACgAAAAEAAAAIcxHP8P5JqhoB2Wq3qk5g4QAAAAxJkSa7KkM4fU06iOEuoMbBQAAABA6X086CjmawI0xQz+CqSpw4E8Zg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAD6juCeLOGrlAI2yq5nwnYVAAAAAASAAACgAAAAEAAAACbSimB0mKI/sV5wCxt/t6oQAAAAw4K5Gdk0MRFxo97skNErgBQAAAD9phWv8NIqyshoLOvqw7cslqL2Ig</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACcXbqydb0Z9rntyMtlqlRiAAAAAASAAACgAAAAEAAAAO8JP9SUDz0HrRLKdjEQEDkYAAAAJyC+S6/67iWiQTzOV+Nm13vb5RE+whZgFAAAAH/PSgBZoQSn4QyCNY+tDZxCfJ7+</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADgUCgqE4G0ijw9DdmO7pfwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADDBKTpp4uVnjtRUyLPIYB+AAAAAASAAACgAAAAEAAAAAHMrNxxBzw2SRXw7nEU69oYAAAAgX/6yAjMWO4tAnqKU/GmsgJMEGmHVAgzFAAAAJud1xrws+Zslr48dXG+XcQvo3tJ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -63,7 +63,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{A1646874-6ACC-4090-8E3A-C5993668E32A}"
-          SQLTask:SqlStatementSource="truncate table ontimedelivery" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table ontimedeliverys" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -96,7 +96,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[OnTimeDelivery]</property>
+                  name="OpenRowset">[OnTimeDeliverys]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -153,48 +153,56 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[&quot;Work Order&quot;]"
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OPSEQ]"
                       cachedDataType="numeric"
-                      cachedName="&quot;Work Order&quot;"
+                      cachedName="OPSEQ"
+                      cachedPrecision="5"
+                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OPSEQ]"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[OPSEQ]" />
+                    <inputColumn
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[REQDATE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="REQDATE"
+                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[REQDATE]"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[REQDATE]" />
+                    <inputColumn
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SHIPDATE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SHIPDATE"
+                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SHIPDATE]"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[SHIPDATE]" />
+                    <inputColumn
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WORKCENTER]"
+                      cachedDataType="numeric"
+                      cachedName="WORKCENTER"
                       cachedPrecision="8"
-                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[&quot;Work Order&quot;]"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Work Order&quot;]" />
-                    <inputColumn
-                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[&quot;Requested Date&quot;]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="&quot;Requested Date&quot;"
-                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[&quot;Requested Date&quot;]"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Requested Date&quot;]" />
-                    <inputColumn
-                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[&quot;Completion Date&quot;]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="10"
-                      cachedName="&quot;Completion Date&quot;"
-                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[&quot;Completion Date&quot;]"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Completion Date&quot;]" />
+                      externalMetadataColumnId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WORKORDER]"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[WORKCENTER]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[&quot;Work Order&quot;]"
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WORKORDER]"
                       dataType="numeric"
-                      name="&quot;Work Order&quot;"
+                      name="WORKORDER"
                       precision="8" />
                     <externalMetadataColumn
-                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[&quot;Requested Date&quot;]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="&quot;Requested Date&quot;" />
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OPSEQ]"
+                      dataType="numeric"
+                      name="OPSEQ"
+                      precision="5" />
                     <externalMetadataColumn
-                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[&quot;Completion Date&quot;]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="&quot;Completion Date&quot;" />
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[REQDATE]"
+                      dataType="dbDate"
+                      name="REQDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SHIPDATE]"
+                      dataType="dbDate"
+                      name="SHIPDATE" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -248,29 +256,29 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT distinct
-WLDOCO AS "Work Order",
-qgpl.cd(WLDRQJ ) AS "Requested Date" ,
-qgpl.cd(wlstrx) AS "Completion Date"
-
-
-
-FROM amsdta.F3112LA 
-WHERE trim(WLMCU ) IN (
-'56001',
-'56002',
-'56003',
-'56003A',
-'56004',
-'56005',
-'56006',
-'56007',
-'56008',
-'56009',
-'96001',
-'96003',
-'96004',
-'96005')</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+DISTINCT 
+WLDOCO AS WorkCenter,
+WLOPSQ AS OpSeq,
+qgpl.cd(WLDRQJ) AS ReqDate ,
+qgpl.cd(WLSTRX) AS ShipDate 
+FROM amsdta.F3112
+WHERE WLDRQJ &gt;= 118001
+AND trim(WLMCU) in (
+ '56001',
+		'56002',
+		'56003',
+		'56003A',
+		'56004',
+		'56005',
+		'56006',
+		'56007',
+		'56008',
+		'56009',
+		'96001',
+		'96003',
+		'96004',
+		'96005')</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -307,57 +315,72 @@ WHERE trim(WLMCU ) IN (
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Work Order&quot;]"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[WORKCENTER]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[&quot;Work Order&quot;]"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Work Order&quot;]"
-                      name="&quot;Work Order&quot;"
+                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[WORKCENTER]"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[WORKCENTER]"
+                      name="WORKCENTER"
                       precision="8"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Requested Date&quot;]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[OPSEQ]"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[&quot;Requested Date&quot;]"
-                      length="10"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Requested Date&quot;]"
-                      name="&quot;Requested Date&quot;"
+                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[OPSEQ]"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[OPSEQ]"
+                      name="OPSEQ"
+                      precision="5"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Completion Date&quot;]"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[REQDATE]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[&quot;Completion Date&quot;]"
+                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[REQDATE]"
                       length="10"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[&quot;Completion Date&quot;]"
-                      name="&quot;Completion Date&quot;"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[REQDATE]"
+                      name="REQDATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[SHIPDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[SHIPDATE]"
+                      length="10"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Output].Columns[SHIPDATE]"
+                      name="SHIPDATE"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[&quot;Work Order&quot;]"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[WORKCENTER]"
                       dataType="numeric"
-                      name="&quot;Work Order&quot;"
+                      name="WORKCENTER"
                       precision="8" />
                     <externalMetadataColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[&quot;Requested Date&quot;]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      name="&quot;Requested Date&quot;" />
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[OPSEQ]"
+                      dataType="numeric"
+                      name="OPSEQ"
+                      precision="5" />
                     <externalMetadataColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[&quot;Completion Date&quot;]"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[REQDATE]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      name="&quot;Completion Date&quot;" />
+                      name="REQDATE" />
+                    <externalMetadataColumn
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Output].ExternalColumns[SHIPDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SHIPDATE" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -366,25 +389,31 @@ WHERE trim(WLMCU ) IN (
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[&quot;Work Order&quot;]"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[WORKCENTER]"
                       dataType="numeric"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[&quot;Work Order&quot;]"
-                      name="&quot;Work Order&quot;"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[WORKCENTER]"
+                      name="WORKCENTER"
                       precision="8" />
                     <outputColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[&quot;Requested Date&quot;]"
-                      codePage="1252"
-                      dataType="str"
-                      length="10"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[&quot;Requested Date&quot;]"
-                      name="&quot;Requested Date&quot;" />
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[OPSEQ]"
+                      dataType="numeric"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[OPSEQ]"
+                      name="OPSEQ"
+                      precision="5" />
                     <outputColumn
-                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[&quot;Completion Date&quot;]"
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[REQDATE]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[&quot;Completion Date&quot;]"
-                      name="&quot;Completion Date&quot;" />
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[REQDATE]"
+                      name="REQDATE" />
+                    <outputColumn
+                      refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[SHIPDATE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[SHIPDATE]"
+                      name="SHIPDATE" />
                     <outputColumn
                       refId="Package\Move Data\Samson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -437,13 +466,13 @@ WHERE trim(WLMCU ) IN (
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="129,42"
-          Id="Package\Move Data"
-          TopLeft="147,197" />
-        <NodeLayout
           Size="202,42"
           Id="Package\Delete OnTimeCompletion"
           TopLeft="115,61" />
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Move Data"
+          TopLeft="147,197" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="213.75,103">
@@ -520,14 +549,6 @@ WHERE trim(WLMCU ) IN (
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Move Data\Samson">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Move Data\OLE DB Destination">
     <Properties>
       <Property>
@@ -537,6 +558,14 @@ WHERE trim(WLMCU ) IN (
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Move Data\Samson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
